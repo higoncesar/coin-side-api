@@ -47,8 +47,6 @@ export default [
       },
     },
   },
-
-  // Habilita o Prettier por último (para evitar conflitos)
   {
     rules: {
       ...prettier.rules,
