@@ -32,5 +32,6 @@ describe('Entity', () => {
 
     expect(entity1.equals(entity2)).toBeTruthy();
     expect(entity1.equals(entity3)).toBeFalsy();
+    expect(entity1.equals(undefined as unknown as FakeEntity)).toBeFalsy();
   });
 });
