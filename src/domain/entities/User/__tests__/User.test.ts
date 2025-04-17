@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { makeUsers } from '@/tests/factories/MakeUsers';
+import { makeUser } from '@/tests/factories/MakeUser';
 
 describe('User', () => {
   it('should create a user with valid properties', () => {
-    const user = makeUsers();
+    const user = makeUser();
 
     expect(user.id).toBeDefined();
     expect(user.name).toBeDefined();
@@ -21,7 +21,7 @@ describe('User', () => {
   });
 
   it('should update the user name', () => {
-    const user = makeUsers();
+    const user = makeUser();
     const newName = 'New Name';
 
     user.setName(newName);

@@ -18,10 +18,8 @@ describe('UniqueEntityId', () => {
   it('should be able to compare UniqueEntityIds', () => {
     const id = randomUUID();
     const uniqueEntityId1 = new UniqueEntityId(id);
-    const uniqueEntityId2 = new UniqueEntityId(id);
-    const uniqueEntityId3 = new UniqueEntityId();
 
-    expect(uniqueEntityId1.isEqual(uniqueEntityId2)).toBeTruthy();
-    expect(uniqueEntityId1.isEqual(uniqueEntityId3)).toBeFalsy();
+    expect(uniqueEntityId1.isEqual(id)).toBeTruthy();
+    expect(uniqueEntityId1.isEqual('other-id')).toBeFalsy();
   });
 });

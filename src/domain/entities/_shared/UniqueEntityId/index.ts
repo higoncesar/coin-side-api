@@ -11,7 +11,7 @@ export class UniqueEntityId {
     return this._value;
   }
 
-  isEqual(other: UniqueEntityId) {
-    return this._value === other.getValue();
+  isEqual(id: string) {
+    return this._value === id;
   }
 }

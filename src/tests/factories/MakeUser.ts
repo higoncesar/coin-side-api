@@ -5,7 +5,7 @@ import { generateValidPassword } from '@/tests/utils/generatePassword';
 
 type Props = CreateUserDTO & { createdAt: Date };
 
-export function makeUsers(prop: Partial<Props> = {}) {
+export function makeUser(prop: Partial<Props> = {}) {
   const name = prop.name ?? faker.person.fullName();
   const email = prop.email ?? faker.internet.email();
   const passwordHash = prop.password ?? generateValidPassword();

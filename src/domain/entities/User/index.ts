@@ -39,6 +39,10 @@ export class User extends Entity<UserProps> {
     this.props.name = name;
   }
 
+  setEmail(email: Email) {
+    this.props.email = email;
+  }
+
   toPrimitive() {
     return {
       id: this.id.getValue(),
