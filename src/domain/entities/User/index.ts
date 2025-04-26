@@ -9,6 +9,13 @@ interface UserProps {
   passwordHash: Password;
   createdAt?: Date;
 }
+export interface UserPrimitives {
+  id: string;
+  name: string;
+  email: string;
+  passwordHash: string;
+  createdAt?: Date;
+}
 
 export class User extends Entity<UserProps> {
   private constructor(props: UserProps, id?: UniqueEntityId) {
@@ -43,7 +50,7 @@ export class User extends Entity<UserProps> {
     this.props.email = email;
   }
 
-  toPrimitive() {
+  toPrimitive(): UserPrimitives {
     return {
       id: this.id.getValue(),
       name: this.name,

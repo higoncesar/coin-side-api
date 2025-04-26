@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { ZodError } from 'zod';
 import { CreateUserUseCase } from '..';
 import { CreateUserDTO } from '@/application/dtos/CreateUserDTO';
 import { UserAlreadyExistError } from '@/domain/exceptions/UserAlreadyExistError';
@@ -13,6 +14,16 @@ describe('CreateUserUseCase', () => {
   beforeEach(() => {
     userRepository = new UserRepositoryInMemory();
     createUserUseCase = new CreateUserUseCase(userRepository);
+  });
+
+  it('should throw an error when input is invalid', async () => {
+    const userProps: CreateUserDTO = {
+      email: 'not-a-valid-email',
+      name: '',
+      password: '123',
+    };
+
+    await expect(createUserUseCase.execute(userProps)).rejects.toThrowError(ZodError);
   });
 
   it('should be able to create a user', async () => {

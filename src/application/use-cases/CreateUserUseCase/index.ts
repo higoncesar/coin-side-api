@@ -1,13 +1,19 @@
+import { ValidatedUseCase } from '../_shared/ValidateUseCase';
 import { CreateUserDTO } from '@/application/dtos/CreateUserDTO';
+import { CreateUserInputSchema } from '@/application/schemas/CreateUserInputSchema';
 import { PasswordService } from '@/application/services/PasswordService';
+import { UserPrimitives } from '@/domain/entities/User';
 import { UserAlreadyExistError } from '@/domain/exceptions/UserAlreadyExistError';
 import { UserFactory } from '@/domain/factories/UserFactory';
 import { IUserRepository } from '@/domain/repositories/IUserRepository';
 
-export class CreateUserUseCase {
-  constructor(private userRepository: IUserRepository) {}
+export class CreateUserUseCase extends ValidatedUseCase<CreateUserDTO, UserPrimitives> {
+  protected schema = CreateUserInputSchema;
+  constructor(private userRepository: IUserRepository) {
+    super();
+  }
 
-  async execute(props: CreateUserDTO) {
+  async executeValidated(props: CreateUserDTO) {
     const { email, name, password } = props;
 
     const existingUser = await this.userRepository.findByEmail(email);
