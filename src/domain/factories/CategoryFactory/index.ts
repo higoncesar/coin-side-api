@@ -1,4 +1,4 @@
-import { UniqueEntityId } from '@/domain/entities/_shared/UniqueEntityId';
+import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
 import { Category } from '@/domain/entities/Category';
 
 export interface CreateIncomeCagetoryProps {

@@ -1,4 +1,4 @@
-import { ValueObject } from '@/domain/entities/_shared/ValueObject';
+import { ValueObject } from '@/domain/_shared/ValueObject';
 import { InvalidPasswordError } from '@/domain/exceptions/InvalidPassword';
 
 interface PasswordProps {

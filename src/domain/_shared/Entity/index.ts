@@ -1,4 +1,4 @@
-import { UniqueEntityId } from '@/domain/entities/_shared/UniqueEntityId';
+import { UniqueEntityId } from '../UniqueEntityId';
 
 export abstract class Entity<T> {
   private readonly _id: UniqueEntityId;

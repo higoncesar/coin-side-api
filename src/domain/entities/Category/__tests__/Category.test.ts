@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Category } from '..';
-import { UniqueEntityId } from '../../_shared/UniqueEntityId';
+import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
 import { InvalidParentCategoryAssignmentError } from '@/domain/exceptions/InvalidParentCategoryAssignmentError';
 import { SubcategoryMatchTypeError } from '@/domain/exceptions/SubcategoryMatchTypeError';
 import {

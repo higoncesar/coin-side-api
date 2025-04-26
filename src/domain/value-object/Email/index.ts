@@ -1,4 +1,4 @@
-import { ValueObject } from '@/domain/entities/_shared/ValueObject';
+import { ValueObject } from '@/domain/_shared/ValueObject';
 import { InvalidEmailError } from '@/domain/exceptions/InvalidEmailError';
 
 interface EmailProps {

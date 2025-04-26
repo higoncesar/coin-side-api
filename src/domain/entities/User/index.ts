@@ -1,5 +1,5 @@
-import { Entity } from '@/domain/entities/_shared/Entity';
-import { UniqueEntityId } from '@/domain/entities/_shared/UniqueEntityId';
+import { Entity } from '@/domain/_shared/Entity';
+import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
 import { Email } from '@/domain/value-object/Email';
 import { Password } from '@/domain/value-object/Password';
 
