@@ -44,6 +44,9 @@ export default [
         typescript: {
           project: './tsconfig.json',
         },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
       },
     },
   },
