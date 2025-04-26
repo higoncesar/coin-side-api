@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { ZodError } from 'zod';
 import { UpdateUserProfileUseCase } from '..';
 import { UserNotFoundError } from '@/domain/exceptions/UserNotFoundError';
 import { IUserRepository } from '@/domain/repositories/IUserRepository';
@@ -13,6 +14,20 @@ describe('UpdateUserProfileUseCase', () => {
   beforeEach(() => {
     userRepository = new UserRepositoryInMemory();
     updateUserProfileUseCase = new UpdateUserProfileUseCase(userRepository);
+  });
+
+  it('should throw an error when input is invalid', async () => {
+    const invalidUserId = 'not-a-uuid';
+    const invalidEmail = 'invalid-email';
+    const invalidName = '';
+
+    await expect(
+      updateUserProfileUseCase.execute({
+        userId: invalidUserId,
+        name: invalidName,
+        email: invalidEmail,
+      }),
+    ).rejects.toThrowError(ZodError);
   });
 
   it('should update user profile', async () => {
