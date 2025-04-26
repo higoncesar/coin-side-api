@@ -1,7 +1,8 @@
 import { Category } from '@/domain/entities/Category';
 
 export interface ICategoryRepository {
-  findById(id: string): Promise<Category | null>;
-  findByName(name: string, userId: string): Promise<Category | null>;
+  findById(id: string): Promise<Category | undefined>;
+  findByName(name: string, userId: string): Promise<Category | undefined>;
   create(category: Category): Promise<Category>;
+  save(category: Category): Promise<void>;
 }
