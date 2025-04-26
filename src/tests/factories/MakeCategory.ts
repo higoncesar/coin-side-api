@@ -2,9 +2,7 @@ import { faker } from '@faker-js/faker/locale/pt_BR';
 import {
   CategoryFactory,
   CreateExpenseCagetoryProps,
-  CreateExpenseSubcategory,
   CreateIncomeCagetoryProps,
-  CreateIncomeSubcategory,
 } from '@/domain/factories/CategoryFactory';
 
 export function makeIncomeCategory(props: Partial<CreateIncomeCagetoryProps> = {}, id?: string) {
@@ -17,15 +15,15 @@ export function makeIncomeCategory(props: Partial<CreateIncomeCagetoryProps> = {
   return CategoryFactory.createIncomeCagetory(defaultProps, id);
 }
 
-export function makeIncomeSubcategory(props: Partial<CreateIncomeSubcategory> = {}, id?: string) {
-  const defaultProps: CreateIncomeSubcategory = {
+export function makeIncomeSubcategory(props: Partial<CreateIncomeCagetoryProps> = {}, id?: string) {
+  const defaultProps: CreateIncomeCagetoryProps = {
     userId: props.userId ?? faker.string.uuid(),
     name: props.name ?? faker.lorem.words(2),
     createdAt: props.createdAt ?? faker.date.past(),
     parentCategory: props.parentCategory ?? makeIncomeCategory(),
   };
 
-  return CategoryFactory.createIncomeSubcategory(defaultProps, id);
+  return CategoryFactory.createIncomeCagetory(defaultProps, id);
 }
 
 export function makeExpenseCategory(props: Partial<CreateExpenseCagetoryProps> = {}, id?: string) {
@@ -38,13 +36,16 @@ export function makeExpenseCategory(props: Partial<CreateExpenseCagetoryProps> =
   return CategoryFactory.createExpenseCagetory(defaultProps, id);
 }
 
-export function makeExpenseSubcategory(props: Partial<CreateExpenseSubcategory> = {}, id?: string) {
-  const defaultProps: CreateExpenseSubcategory = {
+export function makeExpenseSubcategory(
+  props: Partial<CreateExpenseCagetoryProps> = {},
+  id?: string,
+) {
+  const defaultProps: CreateExpenseCagetoryProps = {
     userId: props.userId ?? faker.string.uuid(),
     name: props.name ?? faker.lorem.words(2),
     createdAt: props.createdAt ?? faker.date.past(),
     parentCategory: props.parentCategory ?? makeExpenseCategory(),
   };
 
-  return CategoryFactory.createExpenseSubcategory(defaultProps, id);
+  return CategoryFactory.createExpenseCagetory(defaultProps, id);
 }

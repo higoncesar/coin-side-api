@@ -33,7 +33,7 @@ export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, C
       }
 
       if (isExpenseType) {
-        const category = CategoryFactory.createExpenseSubcategory({
+        const category = CategoryFactory.createExpenseCagetory({
           name,
           userId,
           parentCategory,
@@ -42,7 +42,7 @@ export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, C
         return createdCategory.toPrimitive();
       }
 
-      const category = CategoryFactory.createIncomeSubcategory({
+      const category = CategoryFactory.createIncomeCagetory({
         name,
         userId,
         parentCategory,
