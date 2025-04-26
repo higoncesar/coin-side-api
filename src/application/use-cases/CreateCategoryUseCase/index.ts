@@ -1,20 +1,20 @@
 import { ValidatedUseCase } from '../_shared/ValidateUseCase';
 import { CreateCategoryDTO } from '@/application/dtos/CreateCategoryDTO';
 import { CreateCategoryInputSchema } from '@/application/schemas/CreateCategoryInputSchema';
-import { Category } from '@/domain/entities/Category';
+import { CategoryPrimitives } from '@/domain/entities/Category';
 import { CategoryAlreadyExistError } from '@/domain/exceptions/CategoryAlreadyExistError';
 import { ParentCategoryDoesNotExistError } from '@/domain/exceptions/ParentCategoryDoesNotExistError';
 import { CategoryFactory } from '@/domain/factories/CategoryFactory';
 import { ICategoryRepository } from '@/domain/repositories/ICategoryRepository';
 
-export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, Category> {
+export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, CategoryPrimitives> {
   protected schema = CreateCategoryInputSchema;
 
   constructor(private categoryRepository: ICategoryRepository) {
     super();
   }
 
-  protected async executeValidated(props: CreateCategoryDTO): Promise<Category> {
+  protected async executeValidated(props: CreateCategoryDTO): Promise<CategoryPrimitives> {
     const { name, userId, parentCategoryId, type } = props;
 
     const isCatetoryAlreadyExists = await this.categoryRepository.findByName(name, userId);
@@ -38,7 +38,8 @@ export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, C
           userId,
           parentCategory,
         });
-        return this.categoryRepository.create(category);
+        const createdCategory = await this.categoryRepository.create(category);
+        return createdCategory.toPrimitive();
       }
 
       const category = CategoryFactory.createIncomeSubcategory({
@@ -46,7 +47,8 @@ export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, C
         userId,
         parentCategory,
       });
-      return this.categoryRepository.create(category);
+      const createdCategory = await this.categoryRepository.create(category);
+      return createdCategory.toPrimitive();
     }
 
     if (isExpenseType) {
@@ -54,12 +56,17 @@ export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, C
         name,
         userId,
       });
-      return this.categoryRepository.create(category);
+
+      const createdCategory = await this.categoryRepository.create(category);
+
+      return createdCategory.toPrimitive();
     }
     const category = CategoryFactory.createIncomeCagetory({
       name,
       userId,
     });
-    return this.categoryRepository.create(category);
+
+    const createdCategory = await this.categoryRepository.create(category);
+    return createdCategory.toPrimitive();
   }
 }

@@ -36,17 +36,14 @@ describe('CreateCategoryUseCase', () => {
 
       const category = await createCategoryUseCase.execute(categoryProps);
 
-      expect(category.toPrimitive()).toStrictEqual({
-        id: category.id.getValue(),
+      expect(category).toStrictEqual({
+        id: category.id,
         name: categoryProps.name,
         type: 'INCOME',
         userId: categoryProps.userId,
         createdAt: category.createdAt,
         parentCategoryId: undefined,
       });
-      expect(category.isIncome()).toBeTruthy();
-      expect(category.isExpense()).toBeFalsy();
-      expect(category.isSubcategory()).toBeFalsy();
     });
 
     it('should throw an error if category name already exists', async () => {
@@ -77,22 +74,19 @@ describe('CreateCategoryUseCase', () => {
           userId: faker.string.uuid(),
           type: 'income',
           name: faker.lorem.word(),
-          parentCategoryId: parentCategory.id.getValue(),
+          parentCategoryId: parentCategory.id,
         };
 
         const subcategory = await createCategoryUseCase.execute(subcategoryProps);
 
-        expect(subcategory.toPrimitive()).toStrictEqual({
-          id: subcategory.id.getValue(),
+        expect(subcategory).toStrictEqual({
+          id: subcategory.id,
           name: subcategoryProps.name,
           type: 'INCOME',
           userId: subcategoryProps.userId,
           createdAt: subcategory.createdAt,
-          parentCategoryId: parentCategory.id.getValue(),
+          parentCategoryId: parentCategory.id,
         });
-        expect(subcategory.isIncome()).toBeTruthy();
-        expect(subcategory.isExpense()).toBeFalsy();
-        expect(subcategory.isSubcategory()).toBeTruthy();
       });
 
       it('should throw an error if parent category dost not exist', async () => {
@@ -120,17 +114,14 @@ describe('CreateCategoryUseCase', () => {
 
       const category = await createCategoryUseCase.execute(categoryProps);
 
-      expect(category.toPrimitive()).toStrictEqual({
-        id: category.id.getValue(),
+      expect(category).toStrictEqual({
+        id: category.id,
         name: categoryProps.name,
         type: 'EXPENSE',
         userId: categoryProps.userId,
         createdAt: category.createdAt,
         parentCategoryId: undefined,
       });
-      expect(category.isIncome()).toBeFalsy();
-      expect(category.isExpense()).toBeTruthy();
-      expect(category.isSubcategory()).toBeFalsy();
     });
 
     it('should throw an error if category name already exists', async () => {
@@ -161,22 +152,19 @@ describe('CreateCategoryUseCase', () => {
           userId: faker.string.uuid(),
           type: 'expense',
           name: faker.lorem.word(),
-          parentCategoryId: parentCategory.id.getValue(),
+          parentCategoryId: parentCategory.id,
         };
 
         const subcategory = await createCategoryUseCase.execute(subcategoryProps);
 
-        expect(subcategory.toPrimitive()).toStrictEqual({
-          id: subcategory.id.getValue(),
+        expect(subcategory).toStrictEqual({
+          id: subcategory.id,
           name: subcategoryProps.name,
           type: 'EXPENSE',
           userId: subcategoryProps.userId,
           createdAt: subcategory.createdAt,
-          parentCategoryId: parentCategory.id.getValue(),
+          parentCategoryId: parentCategory.id,
         });
-        expect(subcategory.isIncome()).toBeFalsy();
-        expect(subcategory.isExpense()).toBeTruthy();
-        expect(subcategory.isSubcategory()).toBeTruthy();
       });
 
       it('should throw an error if parent category dost not exist', async () => {

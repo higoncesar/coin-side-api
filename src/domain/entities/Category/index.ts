@@ -15,6 +15,15 @@ type CreateProps = Omit<CategoryProps, 'type' | 'paraentCategory'>;
 
 type CreateSubcategoryProps = CreateProps & { parentCategory: Category };
 
+export interface CategoryPrimitives {
+  id: string;
+  userId: string;
+  type: 'INCOME' | 'EXPENSE';
+  name: string;
+  parentCategoryId?: string;
+  createdAt?: Date;
+}
+
 export class Category extends Entity<CategoryProps> {
   private constructor(props: CategoryProps, id?: UniqueEntityId) {
     super(props, id);
@@ -87,7 +96,7 @@ export class Category extends Entity<CategoryProps> {
     return !!this.props.parentCategory;
   }
 
-  toPrimitive() {
+  toPrimitive(): CategoryPrimitives {
     return {
       id: this.id.getValue(),
       userId: this.userId.getValue(),
