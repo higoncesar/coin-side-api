@@ -41,6 +41,10 @@ export class DomainDate extends ValueObject<DomainDateProps> {
     return this.props.date.toISOString();
   }
 
+  getTime() {
+    return this.props.date.getTime();
+  }
+
   getValue(): Date {
     return this.props.date;
   }

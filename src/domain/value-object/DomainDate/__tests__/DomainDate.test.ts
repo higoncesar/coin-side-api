@@ -120,5 +120,12 @@ describe('DomainDate', () => {
 
       expect(domainDate.getValue()).toBe(domainDate['props'].date);
     });
+
+    it('getTime() should return the correct timestamp', () => {
+      const date = new Date('2025-04-26T12:00:00Z');
+      const domainDate = DomainDate.create(date);
+
+      expect(domainDate.getTime()).toBe(date.getTime());
+    });
   });
 });
