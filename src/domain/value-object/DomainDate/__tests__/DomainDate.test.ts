@@ -1,54 +1,124 @@
-import { faker } from '@faker-js/faker/locale/pt_BR';
-import { describe, expect, it } from 'vitest';
-import { DomainDate } from '..';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { InvalidDateError } from '@/domain/exceptions/InvalidDateError';
+import { DomainDate } from '@/domain/value-object/DomainDate';
 
 describe('DomainDate', () => {
-  it('should create a DomainDate object with the current date', () => {
-    const domainDate = DomainDate.now();
-    expect(domainDate.getValue().toISOString()).toStrictEqual(new Date().toISOString());
+  describe('now()', () => {
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('should create a DomainDate with the current UTC time', () => {
+      const fixedDate = new Date('2025-04-26T10:00:00Z');
+      vi.setSystemTime(fixedDate);
+
+      const domainDate = DomainDate.now();
+
+      expect(domainDate.toDate().getTime()).toBe(fixedDate.getTime());
+    });
   });
 
-  it('should create a DomainDate object from a valid date string', () => {
-    const dateString = faker.date.anytime().toISOString();
-    const domainDate = DomainDate.create(dateString);
+  describe('create()', () => {
+    it('should create a DomainDate from a valid Date object', () => {
+      const date = new Date('2025-04-26T12:00:00Z');
+      const domainDate = DomainDate.create(date);
 
-    expect(domainDate.getValue()).toBeInstanceOf(Date);
-    expect(domainDate.getValue().toISOString()).toStrictEqual(dateString);
+      expect(domainDate.toISOString()).toBe('2025-04-26T12:00:00.000Z');
+    });
+
+    it('should throw InvalidDateError when creating with an invalid Date (NaN)', () => {
+      const invalidDate = new Date('invalid-date');
+
+      expect(() => {
+        DomainDate.create(invalidDate);
+      }).toThrow(InvalidDateError);
+    });
+
+    it('should throw InvalidDateError when creating with a non-Date object', () => {
+      expect(() => {
+        // @ts-expect-error - testando passagem errada de tipo
+        DomainDate.create('2025-04-26T12:00:00Z');
+      }).toThrow(InvalidDateError);
+
+      expect(() => {
+        // @ts-expect-error
+        DomainDate.create(1745668800000);
+      }).toThrow(InvalidDateError);
+
+      expect(() => {
+        // @ts-expect-error
+        DomainDate.create({});
+      }).toThrow(InvalidDateError);
+
+      expect(() => {
+        // @ts-expect-error
+        DomainDate.create(null);
+      }).toThrow(InvalidDateError);
+
+      expect(() => {
+        // @ts-expect-error
+        DomainDate.create(undefined);
+      }).toThrow(InvalidDateError);
+    });
   });
 
-  it('should create a DomainDate object from a valid Date object', () => {
-    const date = new Date();
-    const domainDate = DomainDate.create(date);
+  describe('comparison methods', () => {
+    it('should correctly identify isBefore as true', () => {
+      const earlier = DomainDate.create(new Date('2025-04-25T12:00:00Z'));
+      const later = DomainDate.create(new Date('2025-04-26T12:00:00Z'));
 
-    expect(domainDate.getValue()).toBeInstanceOf(Date);
-    expect(domainDate.getValue().toISOString()).toStrictEqual(date.toISOString());
+      expect(earlier.isBefore(later)).toBe(true);
+    });
+
+    it('should correctly identify isBefore as false when dates are equal', () => {
+      const date1 = DomainDate.create(new Date('2025-04-26T12:00:00Z'));
+      const date2 = DomainDate.create(new Date('2025-04-26T12:00:00Z'));
+
+      expect(date1.isBefore(date2)).toBe(false);
+    });
+
+    it('should correctly identify isAfter as true', () => {
+      const earlier = DomainDate.create(new Date('2025-04-25T12:00:00Z'));
+      const later = DomainDate.create(new Date('2025-04-26T12:00:00Z'));
+
+      expect(later.isAfter(earlier)).toBe(true);
+    });
+
+    it('should correctly identify isAfter as false when dates are equal', () => {
+      const date1 = DomainDate.create(new Date('2025-04-26T12:00:00Z'));
+      const date2 = DomainDate.create(new Date('2025-04-26T12:00:00Z'));
+
+      expect(date1.isAfter(date2)).toBe(false);
+    });
   });
 
-  it('should throw an error when creating from an invalid date string', () => {
-    const invalidDateString = 'invalid-date-string';
+  describe('serialization methods', () => {
+    it('toDate() should return a new Date instance with the same value', () => {
+      const date = new Date('2025-04-26T12:00:00Z');
+      const domainDate = DomainDate.create(date);
 
-    expect(() => DomainDate.create(invalidDateString)).toThrow(InvalidDateError);
-  });
+      const resultDate = domainDate.toDate();
 
-  it('should throw an error when creating from an invalid Date object', () => {
-    const invalidDate = new Date('invalid-date');
+      expect(resultDate).not.toBe(domainDate['props'].date); // new instance
+      expect(resultDate.getTime()).toBe(domainDate['props'].date.getTime());
+    });
 
-    expect(() => DomainDate.create(invalidDate)).toThrow(InvalidDateError);
-  });
+    it('toISOString() should return the correct UTC ISO string', () => {
+      const date = new Date('2025-04-26T12:00:00Z');
+      const domainDate = DomainDate.create(date);
 
-  it('should compare two DomainDate objects correctly', () => {
-    const date1 = DomainDate.create('2023-01-01');
-    const date2 = DomainDate.create('2023-01-02');
+      expect(domainDate.toISOString()).toBe('2025-04-26T12:00:00.000Z');
+    });
 
-    expect(date1.isBefore(date2)).toBeTruthy();
-    expect(date2.isAfter(date1)).toBeTruthy();
-  });
+    it('getValue() should return the internal Date instance', () => {
+      const date = new Date('2025-04-26T12:00:00Z');
+      const domainDate = DomainDate.create(date);
 
-  it('should return the correct ISO string representation', () => {
-    const date = DomainDate.create('2023-01-01');
-    const isoString = date.toISOString();
-
-    expect(isoString).toStrictEqual('2023-01-01T00:00:00-03:00');
+      expect(domainDate.getValue()).toBe(domainDate['props'].date);
+    });
   });
 });

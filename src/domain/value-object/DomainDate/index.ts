@@ -1,4 +1,4 @@
-import { parseISO, isBefore, isAfter, formatISO } from 'date-fns';
+import { isBefore, isAfter } from 'date-fns';
 import { ValueObject } from '@/domain/_shared/ValueObject';
 import { InvalidDateError } from '@/domain/exceptions/InvalidDateError';
 
@@ -15,39 +15,33 @@ export class DomainDate extends ValueObject<DomainDateProps> {
     return new DomainDate({ date: new Date() });
   }
 
-  static create(input: string | Date) {
-    if (typeof input === 'string') {
-      const parsed = parseISO(input);
-      if (isNaN(parsed.getTime())) {
-        throw new InvalidDateError();
-      }
-      return new DomainDate({ date: parsed });
-    }
-
-    if (isNaN(input.getTime())) {
+  static create(value: Date): DomainDate {
+    if (!(value instanceof Date) || isNaN(value.getTime())) {
       throw new InvalidDateError();
     }
 
-    return new DomainDate({ date: input });
+    const date = new Date(value.getTime());
+
+    return new DomainDate({ date });
   }
 
-  isBefore(other: DomainDate) {
+  isBefore(other: DomainDate): boolean {
     return isBefore(this.props.date, other.getValue());
   }
 
-  isAfter(other: DomainDate) {
+  isAfter(other: DomainDate): boolean {
     return isAfter(this.props.date, other.getValue());
   }
 
-  toDate() {
-    return new Date(this.props.date.toISOString());
+  toDate(): Date {
+    return new Date(this.props.date.getTime());
   }
 
-  toISOString() {
-    return formatISO(this.props.date);
+  toISOString(): string {
+    return this.props.date.toISOString();
   }
 
-  getValue() {
-    return this.toDate();
+  getValue(): Date {
+    return this.props.date;
   }
 }
