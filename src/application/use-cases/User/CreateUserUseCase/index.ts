@@ -1,11 +1,11 @@
-import { ValidatedUseCase } from '../_shared/ValidateUseCase';
-import { CreateUserDTO } from '@/application/dtos/CreateUserDTO';
-import { CreateUserInputSchema } from '@/application/schemas/CreateUserInputSchema';
+import { CreateUserDTO } from '@/application/dtos/User/CreateUserDTO';
+import { CreateUserInputSchema } from '@/application/schemas/User/CreateUserInputSchema';
 import { PasswordService } from '@/application/services/PasswordService';
-import { UserPrimitives } from '@/domain/entities/User';
-import { UserAlreadyExistError } from '@/domain/exceptions/UserAlreadyExistError';
-import { UserFactory } from '@/domain/factories/UserFactory';
-import { IUserRepository } from '@/domain/repositories/IUserRepository';
+import { ValidatedUseCase } from '@/application/use-cases/_shared/ValidateUseCase';
+import { UserPrimitives } from '@/domain/User/entities/User';
+import { UserAlreadyExistError } from '@/domain/User/exceptions/UserAlreadyExistError';
+import { UserFactory } from '@/domain/User/factories/UserFactory';
+import { IUserRepository } from '@/domain/User/repositories/IUserRepository';
 
 export class CreateUserUseCase extends ValidatedUseCase<CreateUserDTO, UserPrimitives> {
   protected schema = CreateUserInputSchema;

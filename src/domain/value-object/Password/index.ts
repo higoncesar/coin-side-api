@@ -1,5 +1,5 @@
 import { ValueObject } from '@/domain/_shared/ValueObject';
-import { InvalidPasswordError } from '@/domain/exceptions/InvalidPassword';
+import { InvalidPasswordError } from '@/domain/User/exceptions/InvalidPassword';
 
 interface PasswordProps {
   value: string;

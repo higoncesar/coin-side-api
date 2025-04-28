@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { Password } from '..';
-import { InvalidPasswordError } from '@/domain/exceptions/InvalidPassword';
+
+import { InvalidPasswordError } from '@/domain/User/exceptions/InvalidPassword';
 import { generateValidPassword } from '@/tests/utils/generatePassword';
 
 describe('Password', () => {

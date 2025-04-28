@@ -1,4 +1,4 @@
-import { User } from '@/domain/entities/User';
+import { User } from '@/domain/User/entities/User';
 import { Email } from '@/domain/value-object/Email';
 import { Password } from '@/domain/value-object/Password';
 

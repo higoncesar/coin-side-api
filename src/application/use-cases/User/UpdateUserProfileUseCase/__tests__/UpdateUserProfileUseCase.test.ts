@@ -2,8 +2,9 @@ import { faker } from '@faker-js/faker/locale/pt_BR';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { ZodError } from 'zod';
 import { UpdateUserProfileUseCase } from '..';
-import { UserNotFoundError } from '@/domain/exceptions/UserNotFoundError';
-import { IUserRepository } from '@/domain/repositories/IUserRepository';
+import { UserNotFoundError } from '@/domain/User/exceptions/UserNotFoundError';
+import { IUserRepository } from '@/domain/User/repositories/IUserRepository';
+
 import { UserRepositoryInMemory } from '@/infraestructure/database/repositories/memory/UserRepositoryInMemory';
 import { makeUser } from '@/tests/factories/MakeUser';
 

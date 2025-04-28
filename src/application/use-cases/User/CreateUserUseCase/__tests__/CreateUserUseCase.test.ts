@@ -2,8 +2,8 @@ import { faker } from '@faker-js/faker/locale/pt_BR';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { ZodError } from 'zod';
 import { CreateUserUseCase } from '..';
-import { CreateUserDTO } from '@/application/dtos/CreateUserDTO';
-import { UserAlreadyExistError } from '@/domain/exceptions/UserAlreadyExistError';
+import { CreateUserDTO } from '@/application/dtos/User/CreateUserDTO';
+import { UserAlreadyExistError } from '@/domain/User/exceptions/UserAlreadyExistError';
 import { UserRepositoryInMemory } from '@/infraestructure/database/repositories/memory/UserRepositoryInMemory';
 import { generateValidPassword } from '@/tests/utils/generatePassword';
 
