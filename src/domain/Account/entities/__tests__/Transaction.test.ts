@@ -1,14 +1,13 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { describe, it, expect, beforeEach } from 'vitest';
 
+import { Transaction } from '@/domain/Account/entities/Transaction';
+import { TransactionStatus } from '@/domain/Account/enums/TransactionStatus';
+import { TransactionType } from '@/domain/Account/enums/TransactionType';
+import { TransactionAlreadyCanceledError } from '@/domain/Account/exceptions/TransactionAlreadyCanceledError';
+import { TransactionAlreadyPaidError } from '@/domain/Account/exceptions/TransactionAlreadyPaidError';
+import { TransactionCanceledCannotBePaidError } from '@/domain/Account/exceptions/TransactionCanceledCannotBePaidError';
 import { CategoryIdIsRequiredError } from '@/domain/Category/exceptions/CategoryIdIsRequiredError';
-
-import { Transaction } from '@/domain/Transaction/entities/Transaction';
-import { TransactionStatus } from '@/domain/Transaction/enums/TransactionStatus';
-import { TransactionType } from '@/domain/Transaction/enums/TransactionType';
-import { TransactionAlreadyCanceledError } from '@/domain/Transaction/exceptions/TransactionAlreadyCanceledError';
-import { TransactionAlreadyPaidError } from '@/domain/Transaction/exceptions/TransactionAlreadyPaidError';
-import { TransactionCanceledCannotBePaidError } from '@/domain/Transaction/exceptions/TransactionCanceledCannotBePaidError';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
 import { makeTransaction, makeTransfer } from '@/tests/factories/MakeTransaction';
 

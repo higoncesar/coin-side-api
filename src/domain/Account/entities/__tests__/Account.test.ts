@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { expect, describe, it } from 'vitest';
 import { AccountType } from '@/domain/Account/enums/AccountType';
+import { TransactionStatus } from '@/domain/Account/enums/TransactionStatus';
+import { TransactionType } from '@/domain/Account/enums/TransactionType';
+import { TransactionDoesNotBelongToAccountError } from '@/domain/Account/exceptions/TransactionDoesNotBelongToAccountError';
 import { CreateAccountFactoryProps } from '@/domain/Account/factories/AccountFactory';
-import { TransactionStatus } from '@/domain/Transaction/enums/TransactionStatus';
-import { TransactionType } from '@/domain/Transaction/enums/TransactionType';
-import { TransactionDoesNotBelongToAccountError } from '@/domain/Transaction/exceptions/TransactionDoesNotBelongToAccountError';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
 
 import { makeAccount } from '@/tests/factories/MakeAccount';

@@ -1,7 +1,7 @@
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
-import { Transaction } from '@/domain/Transaction/entities/Transaction';
-import { TransactionStatus } from '@/domain/Transaction/enums/TransactionStatus';
-import { TransactionType } from '@/domain/Transaction/enums/TransactionType';
+import { Transaction } from '@/domain/Account/entities/Transaction';
+import { TransactionStatus } from '@/domain/Account/enums/TransactionStatus';
+import { TransactionType } from '@/domain/Account/enums/TransactionType';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
 import { Money } from '@/domain/value-objects/Money';
 

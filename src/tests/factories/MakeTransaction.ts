@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 
-import { TransactionStatus } from '@/domain/Transaction/enums/TransactionStatus';
-import { TransactionType } from '@/domain/Transaction/enums/TransactionType';
+import { TransactionStatus } from '@/domain/Account/enums/TransactionStatus';
+import { TransactionType } from '@/domain/Account/enums/TransactionType';
 import {
   TransactionFactory,
   CreateTransactionProps,
   CreateTransferProps,
-} from '@/domain/Transaction/factories/TransactionFactory';
+} from '@/domain/Account/factories/TransactionFactory';
 
 export function makeTransaction(
   props: Partial<Omit<CreateTransactionProps, 'categoryId'>> &

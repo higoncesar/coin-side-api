@@ -1,13 +1,13 @@
 import { Entity } from '@/domain/_shared/Entity';
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
-import { CategoryIdIsRequiredError } from '@/domain/Category/exceptions/CategoryIdIsRequiredError';
+import { TransactionStatus } from '@/domain/Account/enums/TransactionStatus';
 
-import { TransactionStatus } from '@/domain/Transaction/enums/TransactionStatus';
-import { TransactionType } from '@/domain/Transaction/enums/TransactionType';
-import { TransactionAlreadyCanceledError } from '@/domain/Transaction/exceptions/TransactionAlreadyCanceledError';
-import { TransactionAlreadyPaidError } from '@/domain/Transaction/exceptions/TransactionAlreadyPaidError';
-import { TransactionCanceledCannotBePaidError } from '@/domain/Transaction/exceptions/TransactionCanceledCannotBePaidError';
-import { TransactionPaymentDateCannotBeInFutureError } from '@/domain/Transaction/exceptions/TransactionPaymentDateCannotBeInFutureError';
+import { TransactionType } from '@/domain/Account/enums/TransactionType';
+import { TransactionAlreadyCanceledError } from '@/domain/Account/exceptions/TransactionAlreadyCanceledError';
+import { TransactionAlreadyPaidError } from '@/domain/Account/exceptions/TransactionAlreadyPaidError';
+import { TransactionCanceledCannotBePaidError } from '@/domain/Account/exceptions/TransactionCanceledCannotBePaidError';
+import { TransactionPaymentDateCannotBeInFutureError } from '@/domain/Account/exceptions/TransactionPaymentDateCannotBeInFutureError';
+import { CategoryIdIsRequiredError } from '@/domain/Category/exceptions/CategoryIdIsRequiredError';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
 import { Money } from '@/domain/value-objects/Money';
 
