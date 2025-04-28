@@ -1,4 +1,4 @@
-import { DomainException } from './DomainException';
+import { DomainException } from '@/domain/_shared/DomainException';
 
 export class TransactionDoesNotBelongToAccountError extends DomainException {
   constructor() {

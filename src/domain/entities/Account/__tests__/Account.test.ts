@@ -223,6 +223,9 @@ describe('Account', () => {
       const primitive = account.toPrimitive();
 
       expect(primitive).toStrictEqual({
+        id: account.id.getValue(),
+        userId: account.userId.getValue(),
+        name: account.name,
         type: defaultProps.type,
         isDefault: defaultProps.isDefault,
         isActive: defaultProps.isActive,

@@ -17,6 +17,17 @@ interface AccountProps {
   createdAt: DomainDate;
 }
 
+export interface AccountPrimitives {
+  id: string;
+  userId: string;
+  name: string;
+  type: string;
+  isDefault: boolean;
+  isActive: boolean;
+  createdAt: number;
+  balance: number;
+}
+
 export class Account extends AggregateRoot<AccountProps> {
   private constructor(props: AccountProps, id?: UniqueEntityId) {
     super(props, id);
@@ -100,8 +111,11 @@ export class Account extends AggregateRoot<AccountProps> {
     this.props.transactions.push(transaction);
   }
 
-  toPrimitive() {
+  toPrimitive(): AccountPrimitives {
     return {
+      id: this.id.getValue(),
+      userId: this.props.userId.getValue(),
+      name: this.props.name,
       type: this.props.type,
       isDefault: this.props.isDefault,
       isActive: this.props.isActive,
