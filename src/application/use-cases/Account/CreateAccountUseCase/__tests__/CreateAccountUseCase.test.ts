@@ -5,7 +5,7 @@ import { CreateAccountUseCase } from '..';
 import { AccountAlreadyExistsError } from '@/domain/Account/exceptions/AccountAlreadyExistsError';
 import { IAccountRepository } from '@/domain/Account/repositories/IAccountRepository';
 import { AccountRepositoryInMemory } from '@/infraestructure/database/repositories/memory/AccountRepositoryInMemory';
-import { makeAccount } from '@/tests/factories/MakeAccount';
+import { makeAccount } from '@/tests-utils/factories/MakeAccount';
 
 describe('CreateAccountUseCase', () => {
   let accountRepository: IAccountRepository;

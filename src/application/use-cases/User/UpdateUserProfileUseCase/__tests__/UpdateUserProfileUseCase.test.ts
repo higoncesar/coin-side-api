@@ -6,7 +6,7 @@ import { UserNotFoundError } from '@/domain/User/exceptions/UserNotFoundError';
 import { IUserRepository } from '@/domain/User/repositories/IUserRepository';
 
 import { UserRepositoryInMemory } from '@/infraestructure/database/repositories/memory/UserRepositoryInMemory';
-import { makeUser } from '@/tests/factories/MakeUser';
+import { makeUser } from '@/tests-utils/factories/MakeUser';
 
 describe('UpdateUserProfileUseCase', () => {
   let updateUserProfileUseCase: UpdateUserProfileUseCase;

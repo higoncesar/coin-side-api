@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { makeUser } from '@/tests/factories/MakeUser';
+import { makeUser } from '@/tests-utils/factories/MakeUser';
 
 describe('User', () => {
   it('should create a user with valid properties', () => {

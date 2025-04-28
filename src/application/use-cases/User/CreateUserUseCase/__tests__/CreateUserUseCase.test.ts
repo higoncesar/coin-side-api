@@ -5,7 +5,7 @@ import { CreateUserUseCase } from '..';
 import { CreateUserDTO } from '@/application/dtos/User/CreateUserDTO';
 import { UserAlreadyExistError } from '@/domain/User/exceptions/UserAlreadyExistError';
 import { UserRepositoryInMemory } from '@/infraestructure/database/repositories/memory/UserRepositoryInMemory';
-import { generateValidPassword } from '@/tests/utils/generatePassword';
+import { generateValidPassword } from '@/tests-utils/generatePassword';
 
 describe('CreateUserUseCase', () => {
   let createUserUseCase: CreateUserUseCase;

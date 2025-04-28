@@ -5,7 +5,7 @@ import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/Category
 import { CategoryNotFoundError } from '@/domain/Category/exceptions/CategoryNotFoundError';
 import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRepository';
 import { CategoryRepositoryInMemory } from '@/infraestructure/database/repositories/memory/CategoryRepositoryInMemory';
-import { makeIncomeCategory, makeIncomeSubcategory } from '@/tests/factories/MakeCategory';
+import { makeIncomeCategory, makeIncomeSubcategory } from '@/tests-utils/factories/MakeCategory';
 
 describe('UpdateCategoryUseCase', () => {
   let categoryRepository: ICategoryRepository;

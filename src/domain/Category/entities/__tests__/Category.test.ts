@@ -9,7 +9,7 @@ import {
   makeExpenseSubcategory,
   makeIncomeCategory,
   makeIncomeSubcategory,
-} from '@/tests/factories/MakeCategory';
+} from '@/tests-utils/factories/MakeCategory';
 
 describe('Category', () => {
   describe('income category', () => {

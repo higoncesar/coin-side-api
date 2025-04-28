@@ -7,10 +7,10 @@ import { TransactionDoesNotBelongToAccountError } from '@/domain/Account/excepti
 import { CreateAccountFactoryProps } from '@/domain/Account/factories/AccountFactory';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
 
-import { makeAccount } from '@/tests/factories/MakeAccount';
+import { makeAccount } from '@/tests-utils/factories/MakeAccount';
 
-import { makeIncomeCategory, makeExpenseCategory } from '@/tests/factories/MakeCategory';
-import { makeTransaction } from '@/tests/factories/MakeTransaction';
+import { makeIncomeCategory, makeExpenseCategory } from '@/tests-utils/factories/MakeCategory';
+import { makeTransaction } from '@/tests-utils/factories/MakeTransaction';
 
 describe('Account', () => {
   const defaultProps: CreateAccountFactoryProps = {

@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { CreateUserDTO } from '@/application/dtos/User/CreateUserDTO';
 import { UserFactory } from '@/domain/User/factories/UserFactory';
-import { generateValidPassword } from '@/tests/utils/generatePassword';
+import { generateValidPassword } from '@/tests-utils/generatePassword';
 
 type Props = CreateUserDTO & { createdAt: Date };
 

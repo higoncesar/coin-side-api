@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { Password } from '..';
 import { InvalidPasswordError } from '@/domain/value-objects/Password/exceptions/InvalidPasswordError';
-import { generateValidPassword } from '@/tests/utils/generatePassword';
+import { generateValidPassword } from '@/tests-utils/generatePassword';
 
 describe('Password', () => {
   it('should create a valid password', () => {

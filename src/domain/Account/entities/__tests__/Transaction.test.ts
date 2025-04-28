@@ -9,7 +9,7 @@ import { TransactionAlreadyPaidError } from '@/domain/Account/exceptions/Transac
 import { TransactionCanceledCannotBePaidError } from '@/domain/Account/exceptions/TransactionCanceledCannotBePaidError';
 import { CategoryIdIsRequiredError } from '@/domain/Category/exceptions/CategoryIdIsRequiredError';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
-import { makeTransaction, makeTransfer } from '@/tests/factories/MakeTransaction';
+import { makeTransaction, makeTransfer } from '@/tests-utils/factories/MakeTransaction';
 
 describe('Transaction Entity', () => {
   describe('create', () => {
