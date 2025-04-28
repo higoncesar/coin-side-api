@@ -1,6 +1,6 @@
 import { User } from '@/domain/User/entities/User';
-import { Email } from '@/domain/value-object/Email';
-import { Password } from '@/domain/value-object/Password';
+import { Email } from '@/domain/value-objects/Email';
+import { Password } from '@/domain/value-objects/Password';
 
 interface UserFactoryProps {
   name: string;

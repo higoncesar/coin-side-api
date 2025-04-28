@@ -3,7 +3,7 @@ import { UpdateUserInputSchema } from '@/application/schemas/User/UpdateUserInpu
 import { ValidatedUseCase } from '@/application/use-cases/_shared/ValidateUseCase';
 import { UserNotFoundError } from '@/domain/User/exceptions/UserNotFoundError';
 import { IUserRepository } from '@/domain/User/repositories/IUserRepository';
-import { Email } from '@/domain/value-object/Email';
+import { Email } from '@/domain/value-objects/Email';
 
 export class UpdateUserProfileUseCase extends ValidatedUseCase<UpdateUserProfileDTO, void> {
   protected schema = UpdateUserInputSchema;

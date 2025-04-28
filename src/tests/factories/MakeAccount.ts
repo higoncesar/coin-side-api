@@ -1,6 +1,9 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
-import { AccountType } from '@/domain/entities/Account/enums/AccountType';
-import { AccountFactory, CreateAccountFactoryProps } from '@/domain/factories/AccountFactory';
+import { AccountType } from '@/domain/Account/enums/AccountType';
+import {
+  CreateAccountFactoryProps,
+  AccountFactory,
+} from '@/domain/Account/factories/AccountFactory';
 
 export function makeAccount(props: Partial<CreateAccountFactoryProps> = {}, id?: string) {
   const defaultProps: CreateAccountFactoryProps = {
