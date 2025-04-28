@@ -1,9 +1,9 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import {
   CategoryFactory,
-  CreateExpenseCagetoryProps,
   CreateIncomeCagetoryProps,
-} from '@/domain/factories/CategoryFactory';
+  CreateExpenseCagetoryProps,
+} from '@/domain/Category/factories/CategoryFactory';
 
 export function makeIncomeCategory(props: Partial<CreateIncomeCagetoryProps> = {}, id?: string) {
   const defaultProps: CreateIncomeCagetoryProps = {

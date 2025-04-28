@@ -58,7 +58,7 @@ describe('CreateAccountUseCase', () => {
     const userId = account.userId.getValue();
 
     const props = {
-      name: faker.finance.accountName(),
+      name: faker.lorem.words(2),
       type: 'BANK',
       userId,
       isDefault: true,

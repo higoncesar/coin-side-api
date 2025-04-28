@@ -2,7 +2,7 @@ import { TransactionStatus } from '../enums/TransactionStatus';
 import { TransactionType } from '../enums/TransactionType';
 import { Entity } from '@/domain/_shared/Entity';
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
-import { CategoryIdIsRequiredError } from '@/domain/exceptions/CategoryIdIsRequiredError';
+import { CategoryIdIsRequiredError } from '@/domain/Category/exceptions/CategoryIdIsRequiredError';
 import { PaymentDateCannotBeInFutureError } from '@/domain/exceptions/PaymentDateCannotBeInFutureError';
 import { TransactionAlreadyCanceledError } from '@/domain/exceptions/TransactionAlreadyCanceledError';
 import { TransactionAlreadyPaidError } from '@/domain/exceptions/TransactionAlreadyPaidError';

@@ -1,11 +1,11 @@
-import { ValidatedUseCase } from '../_shared/ValidateUseCase';
-import { CreateCategoryDTO } from '@/application/dtos/CreateCategoryDTO';
-import { CreateCategoryInputSchema } from '@/application/schemas/CreateCategoryInputSchema';
-import { CategoryPrimitives } from '@/domain/entities/Category';
-import { CategoryAlreadyExistError } from '@/domain/exceptions/CategoryAlreadyExistError';
+import { ValidatedUseCase } from '../../_shared/ValidateUseCase';
+import { CreateCategoryDTO } from '@/application/dtos/Category/CreateCategoryDTO';
+import { CreateCategoryInputSchema } from '@/application/schemas/Category/CreateCategoryInputSchema';
+import { CategoryPrimitives } from '@/domain/Category/entities/Category';
+import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/CategoryAlreadyExistError';
+import { CategoryFactory } from '@/domain/Category/factories/CategoryFactory';
+import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRepository';
 import { ParentCategoryDoesNotExistError } from '@/domain/exceptions/ParentCategoryDoesNotExistError';
-import { CategoryFactory } from '@/domain/factories/CategoryFactory';
-import { ICategoryRepository } from '@/domain/repositories/ICategoryRepository';
 
 export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, CategoryPrimitives> {
   protected schema = CreateCategoryInputSchema;

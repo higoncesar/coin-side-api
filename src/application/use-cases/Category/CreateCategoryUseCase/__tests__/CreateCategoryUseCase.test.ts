@@ -2,10 +2,11 @@ import { faker } from '@faker-js/faker/locale/pt_BR';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { ZodError } from 'zod';
 import { CreateCategoryUseCase } from '..';
-import { CreateCategoryDTO } from '@/application/dtos/CreateCategoryDTO';
-import { CategoryAlreadyExistError } from '@/domain/exceptions/CategoryAlreadyExistError';
+import { CreateCategoryDTO } from '@/application/dtos/Category/CreateCategoryDTO';
+import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/CategoryAlreadyExistError';
+
+import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRepository';
 import { ParentCategoryDoesNotExistError } from '@/domain/exceptions/ParentCategoryDoesNotExistError';
-import { ICategoryRepository } from '@/domain/repositories/ICategoryRepository';
 import { CategoryRepositoryInMemory } from '@/infraestructure/database/repositories/memory/CategoryRepositoryInMemory';
 
 describe('CreateCategoryUseCase', () => {

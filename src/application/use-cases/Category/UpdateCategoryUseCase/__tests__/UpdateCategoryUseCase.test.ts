@@ -1,9 +1,9 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { UpdateCategoryUseCase } from '..';
-import { CategoryAlreadyExistError } from '@/domain/exceptions/CategoryAlreadyExistError';
-import { CategoryNotFoundError } from '@/domain/exceptions/CategoryNotFoundError';
-import { ICategoryRepository } from '@/domain/repositories/ICategoryRepository';
+import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/CategoryAlreadyExistError';
+import { CategoryNotFoundError } from '@/domain/Category/exceptions/CategoryNotFoundError';
+import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRepository';
 import { CategoryRepositoryInMemory } from '@/infraestructure/database/repositories/memory/CategoryRepositoryInMemory';
 import { makeIncomeCategory, makeIncomeSubcategory } from '@/tests/factories/MakeCategory';
 

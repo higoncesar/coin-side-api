@@ -1,9 +1,9 @@
-import { ValidatedUseCase } from '../_shared/ValidateUseCase';
-import { UpdateCategoryDTO } from '@/application/dtos/UpdateCategoryDTO';
-import { UpdateCategoryInputSchema } from '@/application/schemas/UpdateCategoryInputSchema';
-import { CategoryAlreadyExistError } from '@/domain/exceptions/CategoryAlreadyExistError';
-import { CategoryNotFoundError } from '@/domain/exceptions/CategoryNotFoundError';
-import { ICategoryRepository } from '@/domain/repositories/ICategoryRepository';
+import { ValidatedUseCase } from '../../_shared/ValidateUseCase';
+import { UpdateCategoryDTO } from '@/application/dtos/Category/UpdateCategoryDTO';
+import { UpdateCategoryInputSchema } from '@/application/schemas/Category/UpdateCategoryInputSchema';
+import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/CategoryAlreadyExistError';
+import { CategoryNotFoundError } from '@/domain/Category/exceptions/CategoryNotFoundError';
+import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRepository';
 
 export class UpdateCategoryUseCase extends ValidatedUseCase<UpdateCategoryDTO, void> {
   protected schema = UpdateCategoryInputSchema;

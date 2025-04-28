@@ -1,9 +1,10 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { describe, it, expect, beforeEach } from 'vitest';
+
+import { CategoryIdIsRequiredError } from '@/domain/Category/exceptions/CategoryIdIsRequiredError';
 import { TransactionStatus } from '@/domain/entities/Account/enums/TransactionStatus';
 import { TransactionType } from '@/domain/entities/Account/enums/TransactionType';
 import { Transaction } from '@/domain/entities/Account/Transaction';
-import { CategoryIdIsRequiredError } from '@/domain/exceptions/CategoryIdIsRequiredError';
 import { TransactionAlreadyCanceledError } from '@/domain/exceptions/TransactionAlreadyCanceledError';
 import { TransactionAlreadyPaidError } from '@/domain/exceptions/TransactionAlreadyPaidError';
 import { TransactionCanceledCannotBePaidError } from '@/domain/exceptions/TransactionCanceledCannotBePaidError';
