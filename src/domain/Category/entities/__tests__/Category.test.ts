@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 
 import { Category } from '../Category';
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
-import { InvalidParentCategoryAssignmentError } from '@/domain/exceptions/InvalidParentCategoryAssignmentError';
-import { SubcategoryMatchTypeError } from '@/domain/exceptions/SubcategoryMatchTypeError';
+import { InvalidParentCategoryAssignmentError } from '@/domain/Category/exceptions/InvalidParentCategoryAssignmentError';
+import { SubcategoryMatchTypeError } from '@/domain/Category/exceptions/SubcategoryMatchTypeError';
 import {
   makeExpenseCategory,
   makeExpenseSubcategory,

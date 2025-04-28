@@ -1,12 +1,13 @@
 import { Entity } from '@/domain/_shared/Entity';
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
 import { CategoryIdIsRequiredError } from '@/domain/Category/exceptions/CategoryIdIsRequiredError';
-import { PaymentDateCannotBeInFutureError } from '@/domain/exceptions/PaymentDateCannotBeInFutureError';
-import { TransactionAlreadyCanceledError } from '@/domain/exceptions/TransactionAlreadyCanceledError';
-import { TransactionAlreadyPaidError } from '@/domain/exceptions/TransactionAlreadyPaidError';
-import { TransactionCanceledCannotBePaidError } from '@/domain/exceptions/TransactionCanceledCannotBePaidError';
+
 import { TransactionStatus } from '@/domain/Transaction/enums/TransactionStatus';
 import { TransactionType } from '@/domain/Transaction/enums/TransactionType';
+import { TransactionAlreadyCanceledError } from '@/domain/Transaction/exceptions/TransactionAlreadyCanceledError';
+import { TransactionAlreadyPaidError } from '@/domain/Transaction/exceptions/TransactionAlreadyPaidError';
+import { TransactionCanceledCannotBePaidError } from '@/domain/Transaction/exceptions/TransactionCanceledCannotBePaidError';
+import { TransactionPaymentDateCannotBeInFutureError } from '@/domain/Transaction/exceptions/TransactionPaymentDateCannotBeInFutureError';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
 import { Money } from '@/domain/value-objects/Money';
 
@@ -133,7 +134,7 @@ export class Transaction extends Entity<TransactionProps> {
     }
 
     if (paymentDate.isAfter(DomainDate.now())) {
-      throw new PaymentDateCannotBeInFutureError();
+      throw new TransactionPaymentDateCannotBeInFutureError();
     }
 
     this.props.paymentDate = paymentDate;

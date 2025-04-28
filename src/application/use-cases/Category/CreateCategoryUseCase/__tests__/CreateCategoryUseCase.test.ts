@@ -5,8 +5,8 @@ import { CreateCategoryUseCase } from '..';
 import { CreateCategoryDTO } from '@/application/dtos/Category/CreateCategoryDTO';
 import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/CategoryAlreadyExistError';
 
+import { ParentCategoryDoesNotExistError } from '@/domain/Category/exceptions/ParentCategoryDoesNotExistError';
 import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRepository';
-import { ParentCategoryDoesNotExistError } from '@/domain/exceptions/ParentCategoryDoesNotExistError';
 import { CategoryRepositoryInMemory } from '@/infraestructure/database/repositories/memory/CategoryRepositoryInMemory';
 
 describe('CreateCategoryUseCase', () => {

@@ -1,8 +1,8 @@
 import { AggregateRoot } from '@/domain/_shared/AggregateRoot';
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
 import { AccountType } from '@/domain/Account/enums/AccountType';
-import { TransactionDoesNotBelongToAccountError } from '@/domain/exceptions/TransactionDoesNotBelongToAccountError';
 import { Transaction } from '@/domain/Transaction/entities/Transaction';
+import { TransactionDoesNotBelongToAccountError } from '@/domain/Transaction/exceptions/TransactionDoesNotBelongToAccountError';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
 import { Money } from '@/domain/value-objects/Money';
 

@@ -3,9 +3,9 @@ import { CreateCategoryDTO } from '@/application/dtos/Category/CreateCategoryDTO
 import { CreateCategoryInputSchema } from '@/application/schemas/Category/CreateCategoryInputSchema';
 import { CategoryPrimitives } from '@/domain/Category/entities/Category';
 import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/CategoryAlreadyExistError';
+import { ParentCategoryDoesNotExistError } from '@/domain/Category/exceptions/ParentCategoryDoesNotExistError';
 import { CategoryFactory } from '@/domain/Category/factories/CategoryFactory';
 import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRepository';
-import { ParentCategoryDoesNotExistError } from '@/domain/exceptions/ParentCategoryDoesNotExistError';
 
 export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, CategoryPrimitives> {
   protected schema = CreateCategoryInputSchema;

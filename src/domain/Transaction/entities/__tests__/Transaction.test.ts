@@ -3,12 +3,12 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 import { CategoryIdIsRequiredError } from '@/domain/Category/exceptions/CategoryIdIsRequiredError';
 
-import { TransactionAlreadyCanceledError } from '@/domain/exceptions/TransactionAlreadyCanceledError';
-import { TransactionAlreadyPaidError } from '@/domain/exceptions/TransactionAlreadyPaidError';
-import { TransactionCanceledCannotBePaidError } from '@/domain/exceptions/TransactionCanceledCannotBePaidError';
 import { Transaction } from '@/domain/Transaction/entities/Transaction';
 import { TransactionStatus } from '@/domain/Transaction/enums/TransactionStatus';
 import { TransactionType } from '@/domain/Transaction/enums/TransactionType';
+import { TransactionAlreadyCanceledError } from '@/domain/Transaction/exceptions/TransactionAlreadyCanceledError';
+import { TransactionAlreadyPaidError } from '@/domain/Transaction/exceptions/TransactionAlreadyPaidError';
+import { TransactionCanceledCannotBePaidError } from '@/domain/Transaction/exceptions/TransactionCanceledCannotBePaidError';
 import { DomainDate } from '@/domain/value-objects/DomainDate';
 import { makeTransaction, makeTransfer } from '@/tests/factories/MakeTransaction';
 

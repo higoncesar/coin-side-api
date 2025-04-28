@@ -1,7 +1,8 @@
 import { Entity } from '@/domain/_shared/Entity';
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
-import { InvalidParentCategoryAssignmentError } from '@/domain/exceptions/InvalidParentCategoryAssignmentError';
-import { SubcategoryMatchTypeError } from '@/domain/exceptions/SubcategoryMatchTypeError';
+import { InvalidParentCategoryAssignmentError } from '@/domain/Category/exceptions/InvalidParentCategoryAssignmentError';
+
+import { SubcategoryMatchTypeError } from '@/domain/Category/exceptions/SubcategoryMatchTypeError';
 
 interface CategoryProps {
   userId: UniqueEntityId;
