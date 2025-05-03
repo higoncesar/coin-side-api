@@ -4,7 +4,7 @@ import { IAccountRepository } from '@/domain/Account/repositories/IAccountReposi
 export class AccountRepositoryInMemory implements IAccountRepository {
   accounts: Account[] = [];
 
-  async findById(id: string) {
+  async findByIdAndUserId(id: string) {
     const account = this.accounts.find((account) => account.id.getValue() === id);
     return account;
   }
@@ -14,7 +14,7 @@ export class AccountRepositoryInMemory implements IAccountRepository {
     return account;
   }
 
-  async findByName(name: string, userId: string) {
+  async findByNameAndUserId(name: string, userId: string) {
     const account = this.accounts.find(
       (account) => account.name === name && account.userId.getValue() === userId,
     );

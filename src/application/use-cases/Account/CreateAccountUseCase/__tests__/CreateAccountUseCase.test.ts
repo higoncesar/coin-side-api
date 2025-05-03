@@ -27,7 +27,7 @@ describe('CreateAccountUseCase', () => {
 
     const account = await createAccountUseCase.execute(props);
 
-    const createdAccount = await accountRepository.findById(account.id, props.userId);
+    const createdAccount = await accountRepository.findByIdAndUserId(account.id, props.userId);
 
     expect(createdAccount).toBeDefined();
     expect(createdAccount?.name).toBe(props.name);
@@ -68,8 +68,14 @@ describe('CreateAccountUseCase', () => {
 
     const newDefaultAccount = await createAccountUseCase.execute(props);
 
-    const oldDefaultAccount = await accountRepository.findById(account.id.getValue(), userId);
-    const createdNewDefaultAccount = await accountRepository.findById(newDefaultAccount.id, userId);
+    const oldDefaultAccount = await accountRepository.findByIdAndUserId(
+      account.id.getValue(),
+      userId,
+    );
+    const createdNewDefaultAccount = await accountRepository.findByIdAndUserId(
+      newDefaultAccount.id,
+      userId,
+    );
 
     expect(oldDefaultAccount?.isDefault).toBeFalsy();
     expect(createdNewDefaultAccount?.isDefault).toBeTruthy();

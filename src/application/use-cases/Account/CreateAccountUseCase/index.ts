@@ -17,7 +17,7 @@ export class CreateAccountUseCase extends ValidatedUseCase<CreateAccountDTO, Acc
   protected async executeValidated(props: CreateAccountDTO): Promise<AccountPrimitives> {
     const { name, type, userId, isDefault, initialBalance } = props;
 
-    const isAccountAlreadyExists = await this.accountRepository.findByName(name, userId);
+    const isAccountAlreadyExists = await this.accountRepository.findByNameAndUserId(name, userId);
 
     if (isAccountAlreadyExists) {
       throw new AccountAlreadyExistsError();
