@@ -43,6 +43,21 @@ interface TransferResult {
   destinationTransaction: Transaction;
 }
 
+export interface TransactionPrimitives {
+  id: string;
+  userId: string;
+  accountId: string;
+  type: TransactionType;
+  amount: number;
+  description: string;
+  paymentDate?: number;
+  dueDate: number;
+  createdAt: number;
+  status: TransactionStatus;
+  categoryId?: string;
+  linkedTransferId?: string;
+}
+
 export class Transaction extends Entity<TransactionProps> {
   private constructor(props: TransactionProps, id?: UniqueEntityId) {
     super(props, id);
@@ -184,7 +199,7 @@ export class Transaction extends Entity<TransactionProps> {
     return this.props.linkedTransferId;
   }
 
-  toPrimitive() {
+  toPrimitive(): TransactionPrimitives {
     return {
       id: this.id.getValue(),
       userId: this.props.userId.getValue(),

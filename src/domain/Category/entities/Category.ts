@@ -85,6 +85,10 @@ export class Category extends Entity<CategoryProps> {
     this.props.parentCategory = parentCategory;
   }
 
+  isSameType(type: 'INCOME' | 'EXPENSE') {
+    return this.props.type === type;
+  }
+
   isIncome() {
     return this.props.type === 'INCOME';
   }

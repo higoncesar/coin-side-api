@@ -121,6 +121,12 @@ describe('Category', () => {
 
       expect(() => Category.createIncomeSubcategory(props)).toThrowError(SubcategoryMatchTypeError);
     });
+
+    it('should check if the category is the same type', () => {
+      const category = makeIncomeCategory();
+      expect(category.isSameType('INCOME')).toBeTruthy();
+      expect(category.isSameType('EXPENSE')).toBeFalsy();
+    });
   });
 
   describe('expense category', () => {
@@ -233,6 +239,12 @@ describe('Category', () => {
       expect(() => Category.createExpenseSubcategory(props)).toThrowError(
         SubcategoryMatchTypeError,
       );
+    });
+
+    it('should check if the category is the same type', () => {
+      const category = makeExpenseCategory();
+      expect(category.isSameType('INCOME')).toBeFalsy();
+      expect(category.isSameType('EXPENSE')).toBeTruthy();
     });
   });
 });
