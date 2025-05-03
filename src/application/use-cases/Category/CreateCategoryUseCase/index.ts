@@ -1,6 +1,8 @@
 import { ValidatedUseCase } from '../../_shared/ValidateUseCase';
-import { CreateCategoryDTO } from '@/application/dtos/Category/CreateCategoryDTO';
-import { CreateCategoryInputSchema } from '@/application/schemas/Category/CreateCategoryInputSchema';
+import {
+  CreateCategoryDTO,
+  CreateCategoryInputSchema,
+} from '@/application/dtos/Category/CreateCategoryDTO';
 import { CategoryPrimitives } from '@/domain/Category/entities/Category';
 import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/CategoryAlreadyExistError';
 import { ParentCategoryDoesNotExistError } from '@/domain/Category/exceptions/ParentCategoryDoesNotExistError';

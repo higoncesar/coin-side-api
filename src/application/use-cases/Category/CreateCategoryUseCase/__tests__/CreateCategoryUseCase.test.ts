@@ -21,7 +21,7 @@ describe('CreateCategoryUseCase', () => {
   it('should throw an error when input is invalid', async () => {
     const categoryProps: CreateCategoryDTO = {
       userId: 'not-a-uuid',
-      type: 'UNKNOWN_TYPE',
+      type: 'income',
       name: faker.lorem.words(101),
     };
     await expect(createCategoryUseCase.execute(categoryProps)).rejects.toThrowError(ZodError);

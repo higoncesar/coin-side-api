@@ -1,5 +1,7 @@
-import { UpdateUserProfileDTO } from '@/application/dtos/User/UpdateUserProfileDTO';
-import { UpdateUserInputSchema } from '@/application/schemas/User/UpdateUserInputSchema';
+import {
+  UpdateUserInputSchema,
+  UpdateUserProfileDTO,
+} from '@/application/dtos/User/UpdateUserProfileDTO';
 import { ValidatedUseCase } from '@/application/use-cases/_shared/ValidateUseCase';
 import { UserNotFoundError } from '@/domain/User/exceptions/UserNotFoundError';
 import { IUserRepository } from '@/domain/User/repositories/IUserRepository';

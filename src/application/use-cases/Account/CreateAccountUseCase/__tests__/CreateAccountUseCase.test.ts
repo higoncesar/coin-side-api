@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { CreateAccountUseCase } from '..';
-
+import { AccountType } from '@/domain/Account/enums/AccountType';
 import { AccountAlreadyExistsError } from '@/domain/Account/exceptions/AccountAlreadyExistsError';
 import { IAccountRepository } from '@/domain/Account/repositories/IAccountRepository';
 import { AccountRepositoryInMemory } from '@/infraestructure/database/repositories/memory/AccountRepositoryInMemory';
@@ -19,7 +19,7 @@ describe('CreateAccountUseCase', () => {
   it('should create an account', async () => {
     const props = {
       name: faker.finance.accountName(),
-      type: 'BANK',
+      type: AccountType.BANK,
       userId: faker.string.uuid(),
       isDefault: false,
       initialBalance: 0,
@@ -60,7 +60,7 @@ describe('CreateAccountUseCase', () => {
 
     const props = {
       name: faker.lorem.words(2),
-      type: 'BANK',
+      type: 'BANK' as AccountType,
       userId,
       isDefault: true,
       initialBalance: 0,

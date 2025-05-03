@@ -1,12 +1,14 @@
-import { CreateAccountDTO } from '@/application/dtos/Account/CreateAccountDTO';
-import { CreateAccountInputSchema } from '@/application/schemas/Account/CreateAccountInputSchema';
+import {
+  CreateAccountDTO,
+  CreateAccountInputSchema,
+} from '@/application/dtos/Account/CreateAccountDTO';
 import { ValidatedUseCase } from '@/application/use-cases/_shared/ValidateUseCase';
-
 import { AccountPrimitives } from '@/domain/Account/entities/Account';
 import { AccountType } from '@/domain/Account/enums/AccountType';
 import { AccountAlreadyExistsError } from '@/domain/Account/exceptions/AccountAlreadyExistsError';
 import { AccountFactory } from '@/domain/Account/factories/AccountFactory';
 import { IAccountRepository } from '@/domain/Account/repositories/IAccountRepository';
+
 export class CreateAccountUseCase extends ValidatedUseCase<CreateAccountDTO, AccountPrimitives> {
   protected schema = CreateAccountInputSchema;
 

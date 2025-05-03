@@ -1,6 +1,9 @@
 import { ValidatedUseCase } from '../../_shared/ValidateUseCase';
-import { UpdateCategoryDTO } from '@/application/dtos/Category/UpdateCategoryDTO';
-import { UpdateCategoryInputSchema } from '@/application/schemas/Category/UpdateCategoryInputSchema';
+import {
+  UpdateCategoryDTO,
+  UpdateCategoryInputSchema,
+} from '@/application/dtos/Category/UpdateCategoryDTO';
+
 import { CategoryAlreadyExistError } from '@/domain/Category/exceptions/CategoryAlreadyExistError';
 import { CategoryNotFoundError } from '@/domain/Category/exceptions/CategoryNotFoundError';
 import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRepository';

@@ -1,5 +1,4 @@
-import { CreateUserDTO } from '@/application/dtos/User/CreateUserDTO';
-import { CreateUserInputSchema } from '@/application/schemas/User/CreateUserInputSchema';
+import { CreateUserDTO, CreateUserInputSchema } from '@/application/dtos/User/CreateUserDTO';
 import { PasswordService } from '@/application/services/PasswordService';
 import { ValidatedUseCase } from '@/application/use-cases/_shared/ValidateUseCase';
 import { UserPrimitives } from '@/domain/User/entities/User';
