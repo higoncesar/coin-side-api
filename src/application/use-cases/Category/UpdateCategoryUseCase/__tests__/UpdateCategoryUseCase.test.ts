@@ -29,7 +29,10 @@ describe('UpdateCategoryUseCase', () => {
         parentCategoryId: undefined,
       });
 
-      const updatedCategory = await categoryRepository.findById(category.id.getValue());
+      const updatedCategory = await categoryRepository.findByIdAndUserId(
+        category.id.getValue(),
+        category.userId.getValue(),
+      );
       expect(updatedCategory?.name).toStrictEqual(newName);
     });
 
@@ -98,7 +101,10 @@ describe('UpdateCategoryUseCase', () => {
         parentCategoryId: newParentCategory.id.getValue(),
       });
 
-      const updatedCategory = await categoryRepository.findById(category.id.getValue());
+      const updatedCategory = await categoryRepository.findByIdAndUserId(
+        category.id.getValue(),
+        category.userId.getValue(),
+      );
       expect(updatedCategory?.parentCategory?.id.getValue()).toStrictEqual(
         newParentCategory.id.getValue(),
       );

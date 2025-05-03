@@ -4,12 +4,14 @@ import { ICategoryRepository } from '@/domain/Category/repositories/ICategoryRep
 export class CategoryRepositoryInMemory implements ICategoryRepository {
   categories: Category[] = [];
 
-  async findById(id: string) {
-    const category = this.categories.find((category) => category.id.getValue() === id);
+  async findByIdAndUserId(id: string, userId: string) {
+    const category = this.categories.find(
+      (category) => category.id.getValue() === id && category.userId.getValue() === userId,
+    );
     return category;
   }
 
-  async findByName(name: string, userId: string) {
+  async findByNameAndUserId(name: string, userId: string) {
     const category = this.categories.find(
       (category) => category.name === name && category.userId.getValue() === userId,
     );

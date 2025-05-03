@@ -17,7 +17,7 @@ export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, C
   protected async executeValidated(props: CreateCategoryDTO): Promise<CategoryPrimitives> {
     const { name, userId, parentCategoryId, type } = props;
 
-    const isCatetoryAlreadyExists = await this.categoryRepository.findByName(name, userId);
+    const isCatetoryAlreadyExists = await this.categoryRepository.findByNameAndUserId(name, userId);
 
     if (isCatetoryAlreadyExists) {
       throw new CategoryAlreadyExistError();
@@ -27,7 +27,10 @@ export class CreateCategoryUseCase extends ValidatedUseCase<CreateCategoryDTO, C
     const isExpenseType = type === 'expense';
 
     if (isSubcategory) {
-      const parentCategory = await this.categoryRepository.findById(parentCategoryId);
+      const parentCategory = await this.categoryRepository.findByIdAndUserId(
+        parentCategoryId,
+        userId,
+      );
       if (!parentCategory) {
         throw new ParentCategoryDoesNotExistError();
       }

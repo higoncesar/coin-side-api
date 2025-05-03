@@ -14,19 +14,22 @@ export class UpdateCategoryUseCase extends ValidatedUseCase<UpdateCategoryDTO, v
 
   async executeValidated(props: UpdateCategoryDTO): Promise<void> {
     const { categoryId, name, userId, parentCategoryId } = props;
-    const category = await this.categoryRepository.findById(categoryId);
+    const category = await this.categoryRepository.findByIdAndUserId(categoryId, userId);
 
-    if (!category || !category.userId.isEqual(userId)) {
+    if (!category) {
       throw new CategoryNotFoundError();
     }
 
-    const categoryWithSameName = await this.categoryRepository.findByName(name, userId);
-    if (categoryWithSameName && !categoryWithSameName.id.isEqual(categoryId)) {
+    const categoryWithSameName = await this.categoryRepository.findByNameAndUserId(name, userId);
+    if (categoryWithSameName) {
       throw new CategoryAlreadyExistError();
     }
 
     if (parentCategoryId) {
-      const newParentCategory = await this.categoryRepository.findById(parentCategoryId);
+      const newParentCategory = await this.categoryRepository.findByIdAndUserId(
+        parentCategoryId,
+        userId,
+      );
       if (!newParentCategory || !newParentCategory.userId.isEqual(userId)) {
         throw new CategoryNotFoundError();
       }

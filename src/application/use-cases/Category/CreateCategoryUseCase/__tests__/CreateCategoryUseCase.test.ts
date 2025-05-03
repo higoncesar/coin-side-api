@@ -72,7 +72,7 @@ describe('CreateCategoryUseCase', () => {
         const parentCategory = await createCategoryUseCase.execute(parentCategoryProps);
 
         const subcategoryProps: CreateCategoryDTO = {
-          userId: faker.string.uuid(),
+          userId: parentCategory.userId,
           type: 'income',
           name: faker.lorem.word(),
           parentCategoryId: parentCategory.id,
@@ -150,7 +150,7 @@ describe('CreateCategoryUseCase', () => {
         const parentCategory = await createCategoryUseCase.execute(parentCategoryProps);
 
         const subcategoryProps: CreateCategoryDTO = {
-          userId: faker.string.uuid(),
+          userId: parentCategory.userId,
           type: 'expense',
           name: faker.lorem.word(),
           parentCategoryId: parentCategory.id,
